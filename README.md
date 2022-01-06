@@ -10,7 +10,7 @@ Getting Started in Building a Project with Django Rest Framework
 	pip install djangorestframework
 
 
-2. [![Build Status](https://github.com/uadson/to-do-list-drf/blob/main/core/models.py)]
+2. [MODELS](https://github.com/uadson/to-do-list-drf/blob/main/core/models.py)
 
 
 		from django.db import models
@@ -29,7 +29,7 @@ Getting Started in Building a Project with Django Rest Framework
 			done = models.BooleanField(default=False)
 
 
-3. [![Serializers]()]
+3. [SERIALIZERS](https://github.com/uadson/to-do-list-drf/blob/main/core/serializers.py)]
 
 
 		from core.models import Todo
@@ -43,7 +43,7 @@ Getting Started in Building a Project with Django Rest Framework
 				fields = '__all__'
 
 
-4. [![Views](https://github.com/uadson/to-do-list-drf/blob/main/core/views/home_view.py)]
+4. [VIEWS](https://github.com/uadson/to-do-list-drf/blob/main/core/views/home_view.py)
 
 
 		from core.models import Todo
@@ -68,7 +68,7 @@ Getting Started in Building a Project with Django Rest Framework
 		        return Response(serializer.error, status=status.HTTP_400_BAD_REQUEST)
 
 
-5. [![Urls](https://github.com/uadson/to-do-list-drf/blob/main/core/urls/home_url.py)]
+5. [URLS](https://github.com/uadson/to-do-list-drf/blob/main/core/urls/home_url.py)
 
 
 		from django.urls import path
