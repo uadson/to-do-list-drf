@@ -7,6 +7,7 @@ Projeto fundamentado no conteúdo disponível na plataforma Udemy - [Aprenda Dja
 *Project based on the content available on the Udemy platform - [Aprenda Django REST Framework do Zero](https://www.udemy.com/course/aprenda-django-rest-framework-do-zero/)*
 
 [Documentação Oficial](https://www.django-rest-framework.org/)
+
 *[Official Documentation](https://www.django-rest-framework.org/)*
 
 
@@ -65,6 +66,9 @@ Projeto fundamentado no conteúdo disponível na plataforma Udemy - [Aprenda Dja
 		from rest_framework.response import Response
 		from rest_framework import status
 
+		from rest_framework.views import APIView
+		from rest_framework import generics
+
 
 ### Class Based View
 
@@ -109,7 +113,7 @@ Projeto fundamentado no conteúdo disponível na plataforma Udemy - [Aprenda Dja
 		        todo.delete()
 		        return Response(status=status.HTTP_204_NO_CONTENT)
 
-## OU
+#### OU
 
 ### Function Based View
 
@@ -146,6 +150,18 @@ Projeto fundamentado no conteúdo disponível na plataforma Udemy - [Aprenda Dja
 		   elif request.method == 'DELETE':
 		       todo.delete()
 		       return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+### Simplificando...
+
+		class TodoListAndCreate(generics.ListCreateAPIView):
+		    queryset = Todo.objects.all()
+		    serializer_class = TodoSerializer
+
+
+		class TodoDetailChangeAndDelete(generics.RetrieveUpdateDestroyAPIView):
+		    queryset = Todo.objects.all()
+		    serializer_class = TodoSerializer
 
 
 5. [URLS](https://github.com/uadson/to-do-list-drf/blob/main/core/urls/home_url.py)
