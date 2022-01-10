@@ -58,16 +58,22 @@ Projeto fundamentado no conteúdo disponível na plataforma Udemy - [Aprenda Dja
 4. [VIEWS](https://github.com/uadson/to-do-list-drf/blob/main/core/views/home_view.py)
 
 
+
 		from core.models import Todo
 		from core.serializers import TodoSerializer
 
+Function Based Views e Class Based Views
 		from rest_framework.decorators import api_view
 		from rest_framework.exceptions import NotFound
 		from rest_framework.response import Response
 		from rest_framework import status
 
+Class Based Views
 		from rest_framework.views import APIView
 		from rest_framework import generics
+
+ModelViewSets
+		from rest_framework import viewsets
 
 
 ### Class Based View
@@ -152,7 +158,7 @@ Projeto fundamentado no conteúdo disponível na plataforma Udemy - [Aprenda Dja
 		       return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-### Simplificando...
+### "Classes Genéricas"
 
 		class TodoListAndCreate(generics.ListCreateAPIView):
 		    queryset = Todo.objects.all()
@@ -162,6 +168,13 @@ Projeto fundamentado no conteúdo disponível na plataforma Udemy - [Aprenda Dja
 		class TodoDetailChangeAndDelete(generics.RetrieveUpdateDestroyAPIView):
 		    queryset = Todo.objects.all()
 		    serializer_class = TodoSerializer
+
+
+### Model ViewSets
+
+class TodoViewSet(viewsets.ModelViewSet):
+    queryset = Todo.objects.all()
+    serializer_class = TodoSerializer
 
 
 5. [URLS](https://github.com/uadson/to-do-list-drf/blob/main/core/urls/home_url.py)
@@ -174,6 +187,11 @@ Projeto fundamentado no conteúdo disponível na plataforma Udemy - [Aprenda Dja
 
 		# Function Based View
 		from core.views.home_view import todo_list, todo_detail_change_and_delete
+
+		# Model View Set
+
+		from core.views.home_view import TodoViewSet
+		from rest_framework.routers import DefaultRouter
 
 
 		app_name = 'core'
@@ -189,3 +207,10 @@ Projeto fundamentado no conteúdo disponível na plataforma Udemy - [Aprenda Dja
 		    path('', todo_list, name='todo_list'),
 		    path('<int:pk>/', todo_detail_change_and_delete, name='detail_change_delete'),
 		]
+
+
+		# Model View Set
+		
+		router = DefaultRouter()
+		router.register(r'', TodoViewSet)
+		urlpatterns = router.urls
