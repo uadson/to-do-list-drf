@@ -16,13 +16,13 @@ router.register(r'', TodoViewSet)
 urlpatterns = router.urls
 
 # urlpatterns = [
-    # with Class Based View
-
-    # path('', TodoListAndCreate.as_view(), name='todo_list'),
-    # path('<int:pk>/', TodoDetailChangeAndDelete.as_view(), name='detail_change_delete'),
-
-    # with Function Based View
-
-    # path('', todo_list, name='todo_list'),
-    # path('<int:pk>/', todo_detail_change_and_delete, name='detail_change_delete'),
+#    with Class Based View
+#
+#    path('', TodoListAndCreate.as_view(), name='todo_list'),
+#    path('<int:pk>/', TodoDetailChangeAndDelete.as_view(), name='detail_change_delete'),
+#
+#    with Function Based View
+#
+#    path('', todo_list, name='todo_list'),
+#    path('<int:pk>/', todo_detail_change_and_delete, name='detail_change_delete'),
 # ]
